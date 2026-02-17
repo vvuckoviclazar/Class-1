@@ -1,17 +1,31 @@
 import "./index.css";
+import Products from "./Components/Products.jsx";
+import { useState } from "react";
 
-const currentTime = 22;
-let bgSite = "white";
-
-if (currentTime >= 21 || currentTime <= 7) {
-  bgSite = "black";
+function clickOnButton() {
+  console.log("Works");
 }
 
 function App() {
+  let [name, setName] = useState("Hello World");
+  let [tax, setTax] = useState(0);
+
   return (
-    <div style={{ backgroundColor: bgSite }}>
-      <p>Hello</p>
-    </div>
+    <>
+      <Products tax={tax} />
+
+      <h1>My name is Hello World</h1>
+
+      <button onClick={clickOnButton}>{name}</button>
+
+      <input type="text" onInput={(e) => setName(e.target.value)} />
+
+      <input
+        placeholder="Enter new tax"
+        type="number"
+        onInput={(e) => setTax(e.target.value)}
+      />
+    </>
   );
 }
 
